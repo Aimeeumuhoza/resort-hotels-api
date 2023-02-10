@@ -46,13 +46,20 @@ const mailer = async (info, action) =>{
                  Your request received!
              </p>`;
              break;
+             case "forgotPassword":
+                 subject="Forgot password";
+                 emailto = info.email;
+                 composition = `<p>
+                    Dear user , Click <a href="http://localhost:8000/user/resetpassword/${info.token}">here</a>
+             </p>`;
+             break;
             default:
                 subject ="";
                 break;
     }
 
     const mailOptions = {
-        from : `hotelW ${process.env.SEND_MAIL}`,
+        from : `Resort Hotel ${process.env.SEND_MAIL}`,
         to : emailto,
         subject,
         html:composition,
