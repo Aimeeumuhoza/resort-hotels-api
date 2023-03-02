@@ -83,61 +83,72 @@ class userController {
             }
 
 
-        } catch (error) {
+    } catch (error) {
             return res.status(400).json({ error: error.message })
         }
     }
 
-    //     static async updateUser(req,res){
-    //         try {
-    //             if(req.body.password){
-    //                 req.body.password = CryptoJS.AES.encrypt(
-    //                     req.body.password,
-    //                     process.env.PASS_SEC
-    //                     ).toString()
-    //             }
-    //             const userUpdate = await User.findByIdAndUpdate(
-    //             req.params._id,
-    //             {
-    //                 $set: req.body,
-    //             },
-    //             { new:true}
-    //             )
-    //             return res.status(200).json({message:"user updated successfully", userUpdate})
-    //         } catch (error) {
-    //             return res.status(500).json({error:error.message})
-    //         }
-    //     }
-    //     static async getAll(req,res){
-    //         const query = req.query.new
-    //         try {
-    //             const users = query ? await User.find().sort({_id: -1}).limit(5) : await User.find()
-    //             return res.status(200).json(users)
-    //         } catch (error) {
+        // static async updateUser(req,res){
+        //     try {
+        //         if(req.body.password){
+        //             req.body.password = CryptoJS.AES.encrypt(
+        //                 req.body.password,
+        //                 process.env.PASS_SEC
+        //                 ).toString()
+        //         }
+        //         const userUpdate = await User.findByIdAndUpdate(
+        //         req.params._id,
+        //         {
+        //             $set: req.body,
+        //         },
+        //         { new:true}
+        //         )
+        //         return res.status(200).json({message:"user updated successfully", userUpdate})
+        //     } catch (error) {
+        //         return res.status(500).json({error:error.message})
+        //     }
+        // }
+        static async updateUser(req,res){
+            try{
+                const id=req.params._id
+                const user=await User.findByIdAndUpdate(id,req.body)
+                res.status(200).json({messsage:"user updated"})
+             }
+             catch(error){
+                console.log(error)
+             }
+        }
+        static async getAll(req,res){
+            const query = req.query.new
+            try {
+                const users =   await User.find()
+                return res.status(200).json(users)
+            } catch (error) {
 
-    //             return res.status(500).json({error:error.message})
-    //         }
-    //     }
-    //     static async getSingleUser(req,res){
-    //         try {
-    //             const id = req.params._id
-    //             const user = await User.findById(id)
-    //             const {password , ...others} = user._doc
-    //             return res.status(200).json({message:"user found", others})
-    //         } catch (error) {
-    //             return res.status(500).json({error:error.message})
-    //         }
-    //     }
-    //     static async delete(req,res){
-    //         try {
-    //             const id = req.params._id
-    //             console.log(id);
-    //             const user = await User.findByIdAndDelete(id)
-    //             return res.status(200).json({message:"user deleted successfully", user})
-    //         } catch (error) {
-    //             return res.status(500).json({error:error.message})
-    //         }
-    //     }
+                return res.status(500).json({error:error.message})
+            }
+        }
+        static async getSingleUser(req,res){ 
+            try {
+                const id = req.params._id
+                 const user = await User.findById(id)
+                // const {password , ...others} = user._doc
+                return res.status(200).json({message:"user found", user})
+             } catch (error) {
+
+                return res.status(500).json({error:error.message})
+            }
+          }
+        static async delete(req,res){
+            try {
+                const id = req.params._id
+                
+                const user = await User.findByIdAndDelete(id)
+                return res.status(200).json({message:"user deleted successfully", user})
+            } catch (error) {
+                return res.status(500).json({error:error.message})
+            }
+        }
     static async forgotPassword(req, res) {
         try {
             const user = await User.findOne({ email: req.body.email })
