@@ -127,6 +127,20 @@ static async countByType(req,res){
       }
     
 }
+static async getHotelRooms  (req, res)  {
+    try {
+      const hotelId = req.params.id;
+      const hotel = await Hotel.findById(hotelId);
+      const Rooms=hotel.Rooms
+      if (!hotel) {
+        return res.status(404).json({ message: "Hotel not found" });
+      }
+      res.json({ Rooms});
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Server error" });
+    }
+  };
     
 }
 
