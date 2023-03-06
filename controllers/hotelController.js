@@ -104,7 +104,29 @@ class hotelController{
             return res.status(500).json({error:error.message})
         }
     }
+static async countHotelByCity(req,res){
+    try {
+        const city = req.params.city;
+        const count = await Hotel.countDocuments({ City: city });
+        const hotels = await Hotel.find({ City: city });
+        res.status(200).json({ count ,hotels});
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    
+}
 
+static async countByType(req,res){
+    try {
+        const type = req.params.type;
+        const count = await Hotel.countDocuments({ Type: type });
+        const hotels = await Hotel.find({ Type: type });
+        res.status(200).json({ count ,hotels});
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    
+}
     
 }
 
