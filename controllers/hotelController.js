@@ -6,14 +6,14 @@ class hotelController{
     static async createHotel(req,res){
         try {
 
-           // const result = await cloudinary.uploader.upload(req.file.path)
+            const result = await cloudinary.uploader.upload(req.file.path)
             const newHotel = new Hotel({
                 Name: req.body.Name,
                 Type:req.body.Type,
                 City:req.body.City,
                 Address:req.body.Address,
-                //Image:result.secure_url,
-                Image:req.body.Image,
+                Image:result.secure_url,
+                //Image:req.body.Image,
                 Rating:req.body.Rating,
                 Rooms:req.body.Rooms,
                 price:req.body.price,
@@ -51,7 +51,6 @@ class hotelController{
             return res.status(500).json({error:error.message})
         }
     }
-    // //GET ALL PRODUCTS
 
     static async gethotelcity(req,res){
         const qNew = req.query.new
