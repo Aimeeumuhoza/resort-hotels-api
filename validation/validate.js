@@ -3,7 +3,7 @@ const { joiPasswordExtendCore } = require('joi-password');
 const joiPassword = Joi.extend(joiPasswordExtendCore);
 
 const registerschema = Joi.object().keys({
-    username: Joi.string().alphanum().min(3).max(30).required().label("name"),
+    username: Joi.string().alphanum().max(30).required().label("name"),
     email: Joi.string().lowercase().required().label("email"),
     password:joiPassword
     .string()
