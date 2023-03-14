@@ -1,4 +1,5 @@
 const Hotel =require("../models/Hotel")
+const Room=require("../models/Room")
 //const cloudinary= require ("../helper/cloudinary")
 
 class hotelController{
@@ -27,19 +28,29 @@ class hotelController{
        
     }
 
+    // static async updateHotel(req,res){
+    //     try {
+    //         const updateHotel = await Hotel.findByIdAndUpdate(
+    //         req.params._id,
+    //         {
+    //             $set: req.body,
+    //         },
+    //         { new:true}
+    //         )
+    //         return res.status(200).json({message:"hotel updated", updateHotel})
+    //     } catch (error) {
+    //         return res.status(500).json({error:error.message})
+    //     }
+    // }
     static async updateHotel(req,res){
-        try {
-            const updateHotel = await Hotel.findByIdAndUpdate(
-            req.params._id,
-            {
-                $set: req.body,
-            },
-            { new:true}
-            )
-            return res.status(200).json({message:"hotel updated", updateHotel})
-        } catch (error) {
-            return res.status(500).json({error:error.message})
-        }
+        try{
+            const id=req.params._id
+            const hotelupdate=await Hotel.findByIdAndUpdate(id,req.body)
+            res.status(200).json({messsage:"hotel  updated",hotelupdate})
+         }
+         catch(error){
+            console.log(error)
+         }
     }
     static async getAllHotels(req,res){
         const query = req.query.new
@@ -52,28 +63,28 @@ class hotelController{
         }
     }
 
-    static async gethotelcity(req,res){
-        const qNew = req.query.new
-        const qCategory = req.query.category
-        try {
-           let hotels;
-           if(qNew){
-            hotels = await Hotel.find().sort({createdAt: -1 }).limit(5)
+    // static async gethotelcity(req,res){
+    //     const qNew = req.query.new
+    //     const qCategory = req.query.category
+    //     try {
+    //        let hotels;
+    //        if(qNew){
+    //         hotels = await Hotel.find().sort({createdAt: -1 }).limit(5)
 
-           }else if(qCategory){ 
-             hotels = await Hotel.find({categories:{
-                $in:[qCategory], 
-             }});
+    //        }else if(qCategory){ 
+    //          hotels = await Hotel.find({categories:{
+    //             $in:[qCategory], 
+    //          }});
 
-           }else{
-            hotels = await Hotel.find( )
-           }
-           return res.status(200).json(hotels)
-        } catch (error) {
+    //        }else{
+    //         hotels = await Hotel.find( )
+    //        }
+    //        return res.status(200).json(hotels)
+    //     } catch (error) {
             
-            return res.status(500).json({error:error.message})
-        }
-    }
+    //         return res.status(500).json({error:error.message})
+    //     }
+    // }
     static async gethotel(req,res){
         try {
             const id = req.params._id

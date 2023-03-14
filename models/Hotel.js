@@ -25,10 +25,13 @@ const HotelSchema = new mongoose.Schema({
     Rating: {
         type: String
     },
-    Rooms: {
-        type: String,
-    },
-
+  
+        Rooms:[{
+            roomId:{
+                type: String
+            },
+           
+        }],
     Price: {
         type: Number,
         //required:true

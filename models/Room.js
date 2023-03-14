@@ -1,15 +1,25 @@
-const mongoose=require("mongoose")
-
+ const mongoose=require("mongoose")
+const hotel=require("../models/Hotel")
  const RoomSchema = new mongoose.Schema({
+    hotel: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hotels',
+        required: true
+    },
     Price: {
         type: String
        
-
     },
     maxPeople: {
         type: String,
     },
-    Description:{
+  
+   
+    roomNumber:{
         type:String
     }
+
  })
+ 
+const Room = mongoose.model("Rooms", RoomSchema)
+module.exports = Room
