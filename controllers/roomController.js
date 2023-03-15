@@ -7,7 +7,7 @@ class roomController {
   static async createRoom(req, res) {
       try {
 
-          const { hotelId, roomNumber, price, maxPeople } = req.body;
+          const { hotelId, roomNumber, Price, maxPeople } = req.body;
 
           const hotel = await Hotel.findById(hotelId);
           if (!hotel) {
@@ -17,7 +17,7 @@ class roomController {
           const newRoom = new Room({
               hotel: hotel._id,
               roomNumber,
-              price,
+              Price,
               maxPeople,
           });
 
@@ -25,9 +25,9 @@ class roomController {
 
           hotel.Rooms.push({
               roomNumber: room.roomNumber,
-              price: room.price,
+              Price: room.Price,
               maxPeople: room.maxPeople,
-              _id: room._id
+             // _id: room._id
           });
 
           await hotel.save();
@@ -42,7 +42,58 @@ class roomController {
           });
       }
   }
+ static async getAllRoom(req,res){
+    // try {
+    //     const rooms =   await Room.find()
+    //     return res.status(200).json(rooms)
+    // } catch (error) {
 
+    //     return res.status(500).json({error:error.message})
+    // }
+    const  {hotelId}  = req.params;
+
+    try {
+      const hotel = await Hotel.findById(hotelId);
+     
+      if (!hotel) {
+        return res.status(404).json({ error: "Hotel not found" });
+      }
+
+      const rooms = await Room.find( );
+      console.log(rooms)
+      return res.status(200).json({
+        message: "Rooms fetched successfully",
+        rooms,
+      });
+      
+    } catch (error) {
+      return res.status(500).json({
+        error: error.message,
+      });
+    }
+
+ }
+ static async getRoom (req,res){
+    try{
+        const id=req.params._id
+        const room =await Room.findById(id)
+   
+    return res.status(200).json({message:"user found",room })
+} catch (error) {
+    return res.status(500).json({error:error.message})
+}
+}
+static async delete(req,res){
+    try{
+        const id=req.params._id
+        const room=await Room.findByIdAndDelete(id)
+        return res.status(200).json({message:"user deleted",room })
+    }
+    catch (error) {
+        return res.status(500).json({error:error.message})
+    }
+}
+ 
 }
 
 module.exports = roomController;

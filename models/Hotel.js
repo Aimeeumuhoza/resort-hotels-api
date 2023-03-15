@@ -26,12 +26,7 @@ const HotelSchema = new mongoose.Schema({
         type: String
     },
   
-        Rooms:[{
-            roomId:{
-                type: String
-            },
-           
-        }],
+        Rooms:[],
     Price: {
         type: Number,
         //required:true
