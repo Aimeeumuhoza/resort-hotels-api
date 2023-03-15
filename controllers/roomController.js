@@ -93,6 +93,16 @@ static async delete(req,res){
         return res.status(500).json({error:error.message})
     }
 }
+static async updateRoom(req,res){
+    try{
+        const id=req.params._id
+        const roomupdate=await Room.findByIdAndUpdate(id,req.body)
+        res.status(200).json({messsage:"Room  updated",roomupdate})
+     }
+     catch(error){
+        console.log(error)
+     }
+}
  
 }
 

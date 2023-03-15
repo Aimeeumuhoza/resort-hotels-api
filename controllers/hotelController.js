@@ -63,28 +63,7 @@ class hotelController{
         }
     }
 
-    // static async gethotelcity(req,res){
-    //     const qNew = req.query.new
-    //     const qCategory = req.query.category
-    //     try {
-    //        let hotels;
-    //        if(qNew){
-    //         hotels = await Hotel.find().sort({createdAt: -1 }).limit(5)
-
-    //        }else if(qCategory){ 
-    //          hotels = await Hotel.find({categories:{
-    //             $in:[qCategory], 
-    //          }});
-
-    //        }else{
-    //         hotels = await Hotel.find( )
-    //        }
-    //        return res.status(200).json(hotels)
-    //     } catch (error) {
-            
-    //         return res.status(500).json({error:error.message})
-    //     }
-    // }
+ 
     static async gethotel(req,res){
         try {
             const id = req.params._id
@@ -95,16 +74,7 @@ class hotelController{
         }
     }
 
-    // static async gethotelcity(req,res){
-    //     try {
-    //         const city = req.params._city
-    //         const hotel = await Hotel.findById(city)
-    //         return res.status(200).json({message:"user found",hotel })
-    //     } catch (error) {
-    //         return res.status(500).json({error:error.message})
-    //     }
-    // }
-
+  
     static async delete(req,res){
         try {
             const id = req.params._id
