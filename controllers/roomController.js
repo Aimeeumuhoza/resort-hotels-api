@@ -9,6 +9,7 @@ class roomController {
 
           const { hotelId, roomNumber, Price, maxPeople } = req.body;
 
+
           const hotel = await Hotel.findById(hotelId);
           if (!hotel) {
               return res.status(404).json({ error: 'Hotel not found' });
@@ -60,7 +61,7 @@ class roomController {
       }
 
       const rooms = await Room.find( );
-      console.log(rooms)
+    
       return res.status(200).json({
         message: "Rooms fetched successfully",
         rooms,

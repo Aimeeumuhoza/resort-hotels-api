@@ -13,11 +13,13 @@ const hotel=require("../models/Hotel")
     maxPeople: {
         type: String,
     },
-  
-   
     roomNumber:{
         type:String
     }
+    // User:{
+    //     ref:"User",
+    //     user_id:mongoose.Schema.Types.ObjectId,
+    // }
 
  })
  

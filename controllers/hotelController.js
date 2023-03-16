@@ -1,20 +1,19 @@
 const Hotel =require("../models/Hotel")
 const Room=require("../models/Room")
-//const cloudinary= require ("../helper/cloudinary")
+const cloudinary= require ("../helper/cloudinary")
 
 class hotelController{
     
     static async createHotel(req,res){
         try {
 
-            //const result = await cloudinary.uploader.upload(req.file.path)
+            const result = await cloudinary.uploader.upload(req.file.path)
             const newHotel = new Hotel({
                 Name: req.body.Name,
                 Type:req.body.Type,
                 City:req.body.City,
                 Address:req.body.Address,
-                //Image:result.secure_url,
-                Image:req.body.Image,
+                Image:result.secure_url,
                 Rating:req.body.Rating,
                 Rooms:req.body.Rooms,
                 price:req.body.price,

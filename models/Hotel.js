@@ -19,9 +19,10 @@ const HotelSchema = new mongoose.Schema({
     },
 
     Image: {
-        type: String,
+        type: array,
         default: 'avatar',
     },
+    
     Rating: {
         type: String
     },
