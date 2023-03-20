@@ -4,12 +4,10 @@ const HotelSchema = new mongoose.Schema({
     Name: {
         type: String,
         unique: true
-
     },
     Type: {
         type: String,
     },
-
     City: {
         type: String,
     },
@@ -17,12 +15,26 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         //required:true
     },
-
     Image: {
-        type: array,
-        default: 'avatar',
+        type: String,
+       
     },
-    
+    Image1: {
+        type: String,
+        
+    },
+    Image2: {
+        type: String,
+        
+    },
+    Image3: {
+        type: String,
+        
+    },
+    Image4: {
+        type: String,
+       
+    },
     Rating: {
         type: String
     },

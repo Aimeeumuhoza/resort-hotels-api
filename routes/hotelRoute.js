@@ -4,10 +4,10 @@ const validate=require("../middleware/validation")
 const {hotelschema} = require("../validation/validate");
 
 const upload = require("../helper/multer")
-
+//const uploads=require("../helper/cloudinary")
 const hotelRoute = express()
 
- hotelRoute.post("/create",upload.array("Image",4),hotelController.createHotel)
+ hotelRoute.post("/create",hotelController.createHotel)
  hotelRoute.get("/get/:_id",hotelController.gethotel)
 // hotelRoute.get("/getcity/city",hotelController.gethotelcity)
  hotelRoute.get("/all",hotelController.getAllHotels)
