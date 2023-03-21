@@ -39,14 +39,18 @@ const HotelSchema = new mongoose.Schema({
         type: String
     },
   
-        Rooms:[],
-    Price: {
-        type: Number,
-        //required:true
-    },
+    Rooms:[],
+  
     Desc: {
         type: String,
     },
+    comment : { 
+        type: Array
+         },
+    room:{
+        ref:"Room",
+        type: mongoose.Schema.Types.ObjectId,
+    }
 
 })
 

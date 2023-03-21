@@ -23,5 +23,5 @@ const hotel=require("../models/Hotel")
 
  })
  
-const Room = mongoose.model("Rooms", RoomSchema)
+const Room = mongoose.model("Room", RoomSchema)
 module.exports = Room

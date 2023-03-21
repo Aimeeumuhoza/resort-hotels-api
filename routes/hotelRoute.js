@@ -1,9 +1,8 @@
-const express = require("express")
-const hotelController= require("../controllers/hotelController")
-const validate=require("../middleware/validation")
+const express = require("express");
+const hotelController= require("../controllers/hotelController");
+const validate=require("../middleware/validation");
 const {hotelschema} = require("../validation/validate");
-
-const upload = require("../helper/multer")
+const upload = require("../helper/multer");
 //const uploads=require("../helper/cloudinary")
 const hotelRoute = express()
 
@@ -16,4 +15,5 @@ const hotelRoute = express()
  hotelRoute.get("/gethotelRooms/:id",hotelController.getHotelRooms)
  hotelRoute.delete("/delete/:_id",hotelController.delete)
  hotelRoute.patch("/update/:_id",hotelController.updateHotel)
+ 
 module.exports = hotelRoute

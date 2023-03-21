@@ -6,8 +6,8 @@ class roomController {
 
     static async createRoom(req, res) {
         try {
-
-            const { hotelId, roomNumber, Price, maxPeople } = req.body;
+            const hotelId=req.params._id
+            const {  roomNumber, Price, maxPeople } = req.body;
 
 
             const hotel = await Hotel.findById(hotelId);
@@ -16,15 +16,13 @@ class roomController {
             }
 
             const newRoom = new Room({
-                hotel: hotel._id,
                 roomNumber,
                 Price,
                 maxPeople,
             });
 
             const room = await newRoom.save();
-
-            hotel.Rooms.push({
+             hotel.Rooms.push({
                 roomNumber: room.roomNumber,
                 Price: room.Price,
                 maxPeople: room.maxPeople,
@@ -43,31 +41,8 @@ class roomController {
             });
         }
     }
-    static async getAllRoom(req, res) {
-
-        const { hotelId } = req.params;
-
-        try {
-            const hotel = await Hotel.findById(hotelId);
-
-            if (!hotel) {
-                return res.status(404).json({ error: "Hotel not found" });
-            }
-
-            const rooms = await Room.find();
-
-            return res.status(200).json({
-                message: "Rooms fetched successfully",
-                rooms,
-            });
-
-        } catch (error) {
-            return res.status(500).json({
-                error: error.message,
-            });
-        }
-
-    }
+   
+       
     static async getRoom(req, res) {
         try {
             const id = req.params._id
