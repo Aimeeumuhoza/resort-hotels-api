@@ -4,12 +4,10 @@ const HotelSchema = new mongoose.Schema({
     Name: {
         type: String,
         unique: true
-
     },
     Type: {
         type: String,
     },
-
     City: {
         type: String,
     },
@@ -17,25 +15,42 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         //required:true
     },
-
     Image: {
         type: String,
-        default: 'avatar',
+       
+    },
+    Image1: {
+        type: String,
+        
+    },
+    Image2: {
+        type: String,
+        
+    },
+    Image3: {
+        type: String,
+        
+    },
+    Image4: {
+        type: String,
+       
     },
     Rating: {
         type: String
     },
-    Rooms: {
-        type: String,
-    },
-
-    Price: {
-        type: Number,
-        //required:true
-    },
+  
+    Rooms:[],
+  
     Desc: {
         type: String,
     },
+    comment : { 
+        type: Array
+         },
+    room:{
+        ref:"Room",
+        type: mongoose.Schema.Types.ObjectId,
+    }
 
 })
 

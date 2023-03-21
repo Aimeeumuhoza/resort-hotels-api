@@ -88,26 +88,8 @@ class userController {
         }
     }
 
-        // static async updateUser(req,res){
-        //     try {
-        //         if(req.body.password){
-        //             req.body.password = CryptoJS.AES.encrypt(
-        //                 req.body.password,
-        //                 process.env.PASS_SEC
-        //                 ).toString()
-        //         }
-        //         const userUpdate = await User.findByIdAndUpdate(
-        //         req.params._id,
-        //         {
-        //             $set: req.body,
-        //         },
-        //         { new:true}
-        //         )
-        //         return res.status(200).json({message:"user updated successfully", userUpdate})
-        //     } catch (error) {
-        //         return res.status(500).json({error:error.message})
-        //     }
-        // }
+        
+       
         static async updateUser(req,res){
             try{
                 const id=req.params._id
