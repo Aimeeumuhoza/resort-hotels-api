@@ -15,5 +15,5 @@ const hotelRoute = express()
  hotelRoute.get("/gethotelRooms/:id",hotelController.getHotelRooms)
  hotelRoute.delete("/delete/:_id",hotelController.delete)
  hotelRoute.patch("/update/:_id",hotelController.updateHotel)
- 
+  hotelRoute.get("/search/",hotelController.searchHotels)
 module.exports = hotelRoute
