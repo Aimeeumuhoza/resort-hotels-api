@@ -137,6 +137,21 @@ static async getHotelRooms  (req, res)  {
         res.status(500).json({ message: "Server error" });
     }
   };
+  
+  static async searchHotels(req, res) {
+    const  query  = req.query.search;
+  
+    try {
+        const hotels = await Hotel.find({ Name: { $regex: `${query}`, $options: "i" } },);
+       
+      return res.status(200).json(hotels);
+    } catch (error) {
+        console.log(error);
+      return res.status(500).json({ error: error.message });
+    }
+  }
+  
+  
     
 }
 
