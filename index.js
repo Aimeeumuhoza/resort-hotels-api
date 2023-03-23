@@ -1,5 +1,5 @@
 const express = require('express')
-const dataB = require('./dataB')
+const dataB = require("./database/dataB")
 const userRoute = require("./routes/userRoute")
 const hotelRoute=require("./routes/hotelRoute")
 const roomRoute=require("./routes/roomRoute")
