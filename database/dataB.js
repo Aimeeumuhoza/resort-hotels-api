@@ -9,7 +9,7 @@ const dataB = async()=>{
      await mongoose.connect(dbURL, {useNewUrlParser: true}, mongoose.set("strictQuery", false)).then(()=>{
         console.log("database connected successfully")
      })
-     //mongoose.set("strictQuery", false);
+     
     } catch (error) {
         console.log(error)
     }
