@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
-//const dotenv = require("dotenv")
-//dotenv.config()
-const dbURL   = "mongodb+srv://umuhoza:umuhoza@cluster0.lq8fbsl.mongodb.net/hotel"
+const dotenv = require("dotenv")
+dotenv.config()
+const dbURL   = process.env.DB_URL
 
 const dataB = async()=>{
     try {
