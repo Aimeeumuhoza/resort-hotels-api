@@ -1,4 +1,6 @@
 const express = require('express')
+const dotenv = require("dotenv")
+dotenv.config()
 const dataB = require("./database/dataB")
 const userRoute = require("./routes/userRoute")
 const hotelRoute=require("./routes/hotelRoute")
@@ -11,7 +13,7 @@ app.use("/user",userRoute)
 app.use("/hotel",hotelRoute)
 app.use("/room",roomRoute)
 app.use("/comment",commentRoute)
-const port =  8000;
+const port =  process.env.PORT;
 dataB()
 // function used to connect servers
 app.listen(port,()=>{
