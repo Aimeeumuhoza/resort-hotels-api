@@ -6,8 +6,10 @@ const userRoute = require("./routes/userRoute")
 const hotelRoute=require("./routes/hotelRoute")
 const roomRoute=require("./routes/roomRoute")
 const commentRoute = require('./routes/commentRoute')
+const cors = require("cors")
 const app = express()
 
+app.use(cors({origin: "*"}));
 app.use(express.json())
 app.use("/user",userRoute)
 app.use("/hotel",hotelRoute)
