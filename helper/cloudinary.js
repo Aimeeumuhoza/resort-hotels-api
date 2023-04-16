@@ -13,7 +13,7 @@ const uploadImage = async (file) => {
         const uploads = await cloudinary.uploader.upload(
             file.tempFilePath,
             (res, result) => {
-                const { url } = result;
+                const  url  = result;
                 return url;
             }
         );
