@@ -7,11 +7,11 @@ class hotelController{
     static async createHotel(req,res){
         try {
 
-            // const Image = await uploadImage(req.files.Image)
-            // const Image1 = await uploadImage(req.files.Image1)
-            // const Image2 = await uploadImage(req.files.Image2)
-            // const Image3 = await uploadImage(req.files.Image3)
-            // const Image4 = await uploadImage(req.files.Image4)
+            const Image = await uploadImage(req.files.Image)
+            const Image1 = await uploadImage(req.files.Image1)
+            const Image2 = await uploadImage(req.files.Image2)
+            const Image3 = await uploadImage(req.files.Image3)
+            const Image4 = await uploadImage(req.files.Image4)
 
              const newHotel = new Hotel({
                 Name: req.body.Name,
@@ -22,16 +22,16 @@ class hotelController{
                 Rooms:req.body.Rooms,
                 price:req.body.price,
                 Desc: req.body.Desc,
-                // Image:Image.url,
-                // Image1:Image1.url,
-                // Image2:Image2.url,
-                // Image3:Image3.url,
-                // Image4:Image4.url
+                Image:Image.url,
+                Image1:Image1.url,
+                Image2:Image2.url,
+                Image3:Image3.url,
+                Image4:Image4.url
             })
             const hotel = await newHotel.save()
           return res.status(200).json({message:"Hotel created successfully",hotel})  
         } catch (error) {
-            console.log(error);
+            console.log("error",error);
             // return res.status(500).json({error: error.message})
         }
        
