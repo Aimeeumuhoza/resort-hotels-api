@@ -9,15 +9,23 @@ const userRoute = require("./routes/userRoute")
 const hotelRoute=require("./routes/hotelRoute")
 const roomRoute=require("./routes/roomRoute")
 const commentRoute = require('./routes/commentRoute')
+const cors = require("cors")
 const app = express()
+const fileupload = require("express-fileupload")
 
+app.use(
+    fileupload({
+      useTempFiles: true
+    })
+  );
+app.use(cors({origin: "*"}));
 app.use(express.json())
 app.use(morgan('dev'));
 app.use("/user",userRoute)
 app.use("/hotel",hotelRoute)
 app.use("/room",roomRoute)
 app.use("/comment",commentRoute)
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
+
 const port =  process.env.PORT;
 dataB()
 // function used to connect servers

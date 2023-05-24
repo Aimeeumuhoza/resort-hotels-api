@@ -4,18 +4,20 @@
   "description": "hotels management",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "UA",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cloudinary": "^1.32.0",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "esm": "^3.2.25",
     "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
     "joi": "^17.8.3",
     "joi-password": "^4.0.0",
     "jsonwebtoken": "^9.0.0",

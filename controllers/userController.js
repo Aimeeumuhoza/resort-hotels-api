@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 //const generatePassword = require('../helper/generatePassword');
 const { sign } = require("../helper/jwt")
 dotenv.config()
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const mailer = require("../helper/transport")
 const crypto = require("crypto")
 const jwt = require("jsonwebtoken")
