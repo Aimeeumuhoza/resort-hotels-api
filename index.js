@@ -25,6 +25,7 @@ app.use("/user",userRoute)
 app.use("/hotel",hotelRoute)
 app.use("/room",roomRoute)
 app.use("/comment",commentRoute)
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 const port =  process.env.PORT;
 dataB()
